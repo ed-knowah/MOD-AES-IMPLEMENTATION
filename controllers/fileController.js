@@ -35,11 +35,11 @@ module.exports = {
     } else {
       //Convert file to base64 and encrypt
       try {
-        const base64 = fs.readFileSync(path.join(`${__dirname}/uploads/${fileName}`), "base64");
+        const base64 = fs.readFileSync(`/uploads/${fileName}`, "base64");
         const encr = await noahAes.Ctr.encrypt(base64, fileKey, 256);
 
         //write encrypted data to file
-        fs.writeFileSync(path.join(`${__dirname}/uploads/${fileName}`, encr));
+        fs.writeFileSync(`/uploads/${fileName}`, encr);
 
         const person = await User.userModel.findByIdAndUpdate(
           { _id: id },
@@ -59,7 +59,7 @@ module.exports = {
         console.log(error);
       }
 
-      res.download(path.join(`${__dirname}/uploads/${file.fileName}`, `${fileOriginalName}`));
+      res.download(`/uploads/${file.filename}`, `${fileOriginalName}`);
     }
   },
 
@@ -89,8 +89,8 @@ module.exports = {
         const filename = findUser.fileName;
 
         // write decrypted buffer back to the file
-        fs.writeFileSync(path.join(`${__dirname}/uploads/${fileName}`, buffer));
-        res.download(path.join(`${__dirname}/uploads/${fileName}`, `${findUser.fileOriginalName}`));
+        fs.writeFileSync(`/uploads/${filename}`, buffer);
+        res.download(`/uploads/${filename}`, `${findUser.fileOriginalName}`);
       } else {
         return res.status(404).json({
           decrypt: "false",
