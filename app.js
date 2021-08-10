@@ -62,3 +62,31 @@ app.use("/", fileRoutes.router);
 app.listen(PORT, () => {
   console.log(`Your app is running on port ${PORT}..`);
 });
+
+
+// function numberOfItems(arr, item) {
+//   // Write the code that goes here
+  
+//   var compareArr = []
+
+// for(let i =0; i< arr.length; i++){
+//   if(arr[i]= item){
+//     compareArr.push(arr[i])
+//   }
+//   if(arr[2][i]= item){
+//     compareArr.push(arr[i]);
+//   }
+  
+//  return compareArr;
+// }
+// }
+
+// var arr = [
+//   25,
+//   "apple",
+//   ["banana", "strawberry", "apple", 25]
+// ];
+
+
+// console.log(numberOfItems(arr, 25));
+// console.log(numberOfItems(arr, "apple"));
